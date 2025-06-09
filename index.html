@@ -1,0 +1,863 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Bharat Bhushan Yadav | Medical Aspirant</title>
+    <style>
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #264653;
+            --accent: #e9c46a;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: var(--white);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 15px rgba(233, 196, 106, 0.7));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(233, 196, 106, 0.5);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .education-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .date {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Goals Section */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        .goal-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .goal-card h3 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .goal-card ul {
+            margin-left: 20px;
+        }
+
+        .goal-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                margin: 5px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                padding: 10px;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Future sections */
+        .future-section {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">🩺</div>
+                <div class="logo-text">
+                    <h1>Bharat Bhushan Yadav</h1>
+                    <p>Medical Aspirant | Future Doctor</p>
+                </div>
+            </div>
+            <img src="https://via.placeholder.com/150" alt="Bharat Bhushan Yadav" class="profile-image" id="profileImage">
+            <!-- Replace with your actual image -->
+        </div>
+    </header>
+
+    <nav>
+        <div class="container nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Future links -->
+                <li class="future-link" style="display: none;"><a href="#experience">Experience</a></li>
+                <li class="future-link" style="display: none;"><a href="#research">Research</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about" class="animated">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="card">
+                        <h3>Hello, I'm Bharat Bhushan Yadav</h3>
+                        <p>I am a passionate medical aspirant currently preparing for the CEE (Common Entrance Exam) in Nepal. My journey in the medical field began with a deep curiosity about human biology and a desire to serve humanity through healthcare.</p>
+                        <p>Having completed my +2 education from Kathmandu Model College with a focus on science, I'm now fully dedicated to achieving my dream of becoming a doctor. I believe medicine is not just a profession but a calling to make a meaningful difference in people's lives.</p>
+                        <p>When I'm not studying, I enjoy reading medical case studies, participating in health awareness programs, and mentoring younger students interested in medical careers.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x350" alt="Bharat studying">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="animated delay-1">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="card">
+                    <div class="education-item">
+                        <h3>Higher Secondary Education (+2)</h3>
+                        <span class="date">2021 - 2023</span>
+                        <p><strong>Kathmandu Model College</strong>, Bagbazar, Kathmandu</p>
+                        <p>Completed with distinction in Science stream with Biology as major subject. Actively participated in science exhibitions and health awareness programs.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="education-item">
+                        <h3>Secondary Education (SEE)</h3>
+                        <span class="date">Completed 2021</span>
+                        <p><strong>Lord Buddha School</strong>, Biratnagar</p>
+                        <p>Completed with excellent grades. Served as science club president and organized several health awareness campaigns in school.</p>
+                    </div>
+                </div>
+                <!-- Future education item -->
+                <div class="card future-education" style="display: none;">
+                    <div class="education-item">
+                        <h3>MBBS (Bachelor of Medicine and Bachelor of Surgery)</h3>
+                        <span class="date">Expected 2023-2028</span>
+                        <p><strong>Medical College</strong>, Nepal</p>
+                        <p>This section will be updated with my medical school details after I pass the CEE exam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="animated delay-2">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Goals & Aspirations</h2>
+            </div>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3><i class="fas fa-bullseye"></i> Short-term Goals</h3>
+                    <ul>
+                        <li>Successfully pass the CEE entrance exam with a competitive rank</li>
+                        <li>Secure admission in a reputable medical college</li>
+                        <li>Develop strong foundational knowledge in medical sciences</li>
+                        <li>Improve communication skills essential for patient care</li>
+                    </ul>
+                </div>
+                <div class="goal-card">
+                    <h3><i class="fas fa-chart-line"></i> Long-term Goals</h3>
+                    <ul>
+                        <li>Become a compassionate and skilled medical professional</li>
+                        <li>Specialize in a field that aligns with my interests during MBBS</li>
+                        <li>Contribute to medical research in Nepal</li>
+                        <li>Work in both urban and rural areas to address healthcare disparities</li>
+                    </ul>
+                </div>
+                <div class="goal-card">
+                    <h3><i class="fas fa-book-open"></i> Current Focus</h3>
+                    <p>I am currently fully dedicated to preparing for the CEE exam. My daily routine includes:</p>
+                    <ul>
+                        <li>6-8 hours of focused study</li>
+                        <li>Regular practice tests to assess progress</li>
+                        <li>Concept review with study groups</li>
+                        <li>Physical exercise to maintain health</li>
+                        <li>Weekly mock exams to build exam temperament</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="animated delay-3">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kathmandu, Nepal</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>bharat.yadav@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+977 98XXXXXXX</span>
+                        </div>
+                    </div>
+                    <h3>Connect With Me</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future sections -->
+    <section id="experience" class="future-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Medical Experience</h2>
+            </div>
+            <div class="card">
+                <p>This section will display my medical experience after I become a doctor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="future-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research & Publications</h2>
+            </div>
+            <div class="card">
+                <p>This section will display my research work and publications in medical journals.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <div class="logo-icon">🩺</div>
+                    <div class="logo-text">
+                        <h1>Bharat Bhushan Yadav</h1>
+                        <p>Dedicated to becoming a healer</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#goals">Goals</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Bharat Bhushan Yadav. All rights reserved.</p>
+                    <p>Designed with passion for medicine</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const navLinks = document.getElementById('navLinks');
+                    navLinks.classList.remove('active');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animated');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        animateOnScroll();
+
+        // Function to simulate becoming a doctor
+        function becomeDoctor() {
+            // Change title
+            document.title = "Dr. Bharat Bhushan Yadav | Medical Professional";
+            
+            // Update header
+            const logoText = document.querySelector('.logo-text p');
+            logoText.textContent = "Medical Professional";
+            
+            // Show future sections
+            document.querySelectorAll('.future-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            // Show future education
+            document.querySelectorAll('.future-education').forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            // Show future nav links
+            document.querySelectorAll('.future-link').forEach(link => {
+                link.style.display = 'block';
+            });
+            
+            // Change profile image to doctor image
+            document.getElementById('profileImage').src = "https://via.placeholder.com/150/2a9d8f/ffffff?text=Dr.+Bharat";
+            
+            // Update about section
+            const aboutText = document.querySelector('.about-text p:first-child');
+            aboutText.textContent = "I am Dr. Bharat Bhushan Yadav, a medical professional dedicated to providing compassionate care to my patients. My journey in medicine began with a deep curiosity about human biology and has grown into a lifelong commitment to healing.";
+            
+            console.log("Congratulations Dr. Bharat! Profile updated successfully.");
+        }
+
+        // For demonstration purposes - would be removed in actual implementation
+        // setTimeout(becomeDoctor, 3000);
+    </script>
+</body>
+</html>     
